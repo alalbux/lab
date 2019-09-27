@@ -14,7 +14,7 @@ const typeTitle = (element, { displayName, ...textProps}) =>
   }
 
 const H1 = typeTitle('h1', {
-  displayName: 'H1',
+  displayName: 'Title.H1',
   fontSize: 44,
   fontWeight: 'bold',
   lineHeight: 1,
@@ -24,7 +24,7 @@ const H1 = typeTitle('h1', {
 H1.displayName = 'H1'
 
 const H2 = typeTitle('h2', {
-  displayName: 'H2',
+  displayName: 'Title.H2',
   fontSize: 24,
   fontWeight: 'normal',
   lineHeight: 1.22,
@@ -34,7 +34,7 @@ const H2 = typeTitle('h2', {
 H2.displayName = 'H2'
 
 const H3 = typeTitle('h3', {
-  displayName: 'H3',
+  displayName: 'Title.H3',
   fontSize: 21,
   fontWeight: 'bold',
   lineHeight: 0.95,
@@ -44,7 +44,7 @@ const H3 = typeTitle('h3', {
 H3.displayName = 'H3'
 
 const H4 = typeTitle('h4', {
-  displayName: 'H4',
+  displayName: 'Title.H4',
   fontSize: 18,
   fontWeight: 'bold',
   lineHeight: 1.39,
