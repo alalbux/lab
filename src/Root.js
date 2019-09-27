@@ -1,12 +1,11 @@
 import React from 'react'
-// import App from './containers/App'
+import Home from './containers/Home'
 import GlobalStyles from './styles/globalStyles'
 
 const Root = () => (
   <main>
     <GlobalStyles />
-    <div>Test</div>
-    {/* <App /> */}
+    <Home />
   </main>
 )
 
