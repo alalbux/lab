@@ -1,3 +1,6 @@
+// cards
+export { default as Card } from './cards/Card/Card'
+
 // content
 export { default as Button } from './content/Button/Button'
 export { default as Text } from './content/Text/Text'
