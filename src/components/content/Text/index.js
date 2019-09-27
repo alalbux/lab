@@ -7,7 +7,7 @@ const Text = styled.p`
   line-height: ${props => props.lineHeight};
   color: ${props => props.color};
   text-align: ${props => props.align};
-  text-transform: ${props => props.uppercase ? 'uppercase': null};
+  text-transform: ${props => props.uppercase ? 'uppercase' : null};
   letter-spacing: ${props => props.letterSpacing};
 `
 
@@ -21,7 +21,7 @@ Text.propTypes = {
   ]),
   fontSize: PropTypes.number,
   letterSpacing: PropTypes.string,
-  uppercase: PropTypes.bool,
+  uppercase: PropTypes.bool
 }
 
 Text.defaultProps = {

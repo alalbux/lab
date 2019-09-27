@@ -1,4 +1,4 @@
-//content
+// content
 export { default as Button } from './content/Button'
 export { default as Text } from './content/Text'
 export { default as Title } from './content/Title'

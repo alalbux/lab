@@ -1,8 +1,8 @@
 import React from 'react'
 import Text from '../Text'
 
-const typeTitle = (element, { displayName, ...textProps}) =>
-  ({ children, ...props }) => {
+const typeTitle = (element, { displayName, ...textProps }) =>
+  ({ children, ...props }) => { // eslint-disable-line
     const Title = Text.withComponent(element)
     Title.displayName = displayName
 

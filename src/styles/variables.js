@@ -13,7 +13,6 @@ export const Transition = {
   default: `.25s`
 }
 
-
 export const FontFamily = {
   default: `Poppins`
 }

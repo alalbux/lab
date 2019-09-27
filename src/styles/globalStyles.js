@@ -48,8 +48,8 @@ const GlobalStyles = createGlobalStyle`
   }
   img {
     display: block;
-  	height: auto;
-  	max-width: 100%;
+    height: auto;
+    max-width: 100%;
   }
   svg {
     fill: currentColor;

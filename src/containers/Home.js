@@ -6,17 +6,17 @@ import {
 } from '../components'
 
 class Home extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     // this.fetchData()
   }
 
-  render() {
+  render () {
     return (
       <Page>
         <Flexbox vertical>
