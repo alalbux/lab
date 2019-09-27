@@ -4,6 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Stack
 - [React](https://reactjs.org/)
+- [Styled-components](https://www.styled-components.com/)
 
 ## Run the project locally
 
