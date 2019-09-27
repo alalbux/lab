@@ -6,7 +6,7 @@ import {
   string
 } from 'prop-types'
 import styled from 'styled-components'
-import Input from '../Input/'
+import Input from '../Input/Input'
 
 const SelectWrapper = styled.div`
   display: inline-block;

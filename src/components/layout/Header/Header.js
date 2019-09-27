@@ -2,8 +2,8 @@ import React from 'react'
 import { oneOfType, node, func } from 'prop-types'
 import styled from 'styled-components'
 
-import Flexbox from '../Flexbox'
-import Title from '../../content/Title'
+import Flexbox from '../Flexbox/Flexbox'
+import Title from '../../content/Title/Title'
 
 const HeaderContainer = styled.div`
   padding-bottom: 32px;
