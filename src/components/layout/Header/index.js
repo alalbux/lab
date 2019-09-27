@@ -3,7 +3,7 @@ import { oneOfType, node, func } from 'prop-types'
 import styled from 'styled-components'
 
 import Flexbox from '../Flexbox'
-import H1 from '../../content/Title/H1'
+import Title from '../../content/Title'
 
 const HeaderContainer = styled.div`
   padding-bottom: 32px;
@@ -19,7 +19,7 @@ const HeaderContainer = styled.div`
 const Header = () => (
   <HeaderContainer>
     <Flexbox>
-        <H1>Laborit Cars</H1>
+      <Title.H1>Laborit Cars</Title.H1>
     </Flexbox>
   </HeaderContainer>
 )
