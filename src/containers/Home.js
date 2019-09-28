@@ -4,6 +4,7 @@ import {
   Flexbox,
   Page
 } from '../components'
+import Filter from './Filter/Filter'
 
 class Home extends Component {
   constructor (props) {
@@ -21,6 +22,7 @@ class Home extends Component {
       <Page>
         <Flexbox vertical>
           <Header height='100px' />
+          <Filter />
         </Flexbox>
       </Page >
     )
