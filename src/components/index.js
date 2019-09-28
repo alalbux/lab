@@ -14,3 +14,7 @@ export { default as Select } from './form/Select/Select'
 export { default as Flexbox } from './layout/Flexbox/Flexbox'
 export { default as Header } from './layout/Header/Header'
 export { default as Page } from './layout/Page/Page'
+
+// list
+export { default as List } from './list/List/List'
+export { default as ListItem } from './list/ListItem/ListItem'
