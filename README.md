@@ -1,6 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Lab
+![](https://flat.badgen.net/github/status/alalbux/lab)
+![](https://flat.badgen.net/github/last-commit/alalbux/lab)
+![](https://flat.badgen.net/github/license/alalbux/lab)
 
 ## Stack
 - [React](https://reactjs.org/)
