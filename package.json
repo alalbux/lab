@@ -4,6 +4,7 @@
     "name": "Amanda Albuquerque",
     "email": "amandlei@hotmail.com"
   },
+  "license": "MIT",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
