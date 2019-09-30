@@ -16,9 +16,8 @@ const HeaderContainer = styled.div`
   font-weight: 600;
   width: 100%;
   margin: 0 auto;
-  min-height: 70vh;
-  padding: 16px;
-  ${props => props.height && `height: ${props.height};`}
+  min-height: 50vh;
+  padding: 36px;
 `
 
 const Subtitle = styled(Title.H2)`
@@ -29,7 +28,7 @@ const Header = ({children}) => (
   <HeaderContainer>
     <Flexbox vertical middle>
       <Title.H1>Laborit Cars</Title.H1>
-      <Subtitle>A simple vehicle bookmarking app <i>❤</i></Subtitle>
+      <Subtitle>É uma simples busca de modelos de carros <i>❤</i></Subtitle>
       {children}
     </Flexbox>
   </HeaderContainer>
