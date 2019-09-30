@@ -15,10 +15,10 @@ const typeTitle = (element, { displayName, ...textProps }) =>
 
 const H1 = typeTitle('h1', {
   displayName: 'Title.H1',
-  fontSize: 44,
+  fontSize: 56,
   fontWeight: 'bold',
   lineHeight: 1,
-  color: '#1F2D30'
+  color: '#FFFFFF'
 })
 
 H1.displayName = 'H1'
@@ -28,7 +28,7 @@ const H2 = typeTitle('h2', {
   fontSize: 24,
   fontWeight: 'normal',
   lineHeight: 1.22,
-  color: '#1F2D30'
+  color: '#FFFFFF'
 })
 
 H2.displayName = 'H2'
