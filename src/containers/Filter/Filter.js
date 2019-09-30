@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import {
+  Card,
   Text,
   Select,
   Flexbox
@@ -8,10 +9,17 @@ import {
 
 const FormContent = styled.form`
   width: 100%;
-  margin-bottom: 24px;
+  margin: 54px 20px;
 `
-const FormItem = styled.div`
-  width: 150px;
+const FormItem = styled(Card)`
+  text-align: center;
+  margin: 24px;
+  min-height: 100px;
+`
+
+const FormLabel = styled(Text)`
+  text-align: center;
+  margin-bottom: 24px;
 `
 
 class Filter extends Component {
@@ -52,7 +60,7 @@ class Filter extends Component {
   }
 
   handleModelSelected(value) {
-    this.setState({ brandValue: value })
+    this.setState({ modelValue: value })
   }
 
   handleYearSelected(value) {
@@ -60,7 +68,6 @@ class Filter extends Component {
   }
 
   fetchModelData(brandID) {
-    console.log(brandID)
     fetch(`https://parallelum.com.br/fipe/api/v1/carros/marcas/${brandID}/modelos`)
       .then(response => response.json())
       .then(data =>
@@ -85,68 +92,66 @@ class Filter extends Component {
       yearValue
     } = this.state
     return (
-      <div>
-        <FormContent>
-          <Flexbox row justify='space-between'>
-            <FormItem>
-              <Text>Marca</Text>
-              {error ? <p>Nenhuma opção encontrada</p> : null}
-              {!isLoading ? (
-                <Select
-                  name='brand'
-                  value={brandValue}
-                  onChange={e => this.handleBrandSelected(e.target.value)}>
-                  {brand.map(item => {
-                    return (
-                      <option value={item.codigo} key={item.codigo}>{item.nome}</option>
-                    )
-                  })}
-                </Select>
-              ) : (
-                  <h3>Loading...</h3>
-                )}
-            </FormItem>
-            <div>
-              <Text>Modelo</Text>
-              {error ? <p>Nenhuma opção encontrada</p> : null}
-              {!isLoading ? (
-                <Select
-                  name='model'
-                  value={modelValue}
-                  onChange={e => this.handleModelSelected(e.target.value)}
-                >
-                  {model.map(item => {
-                    return (
-                      <option value={item.codigo}>{item.nome}</option>
-                    )
-                  })}
-                </Select>
-              ) : (
-                  <h3>Loading...</h3>
-                )}
-            </div>
-            <div>
-              <Text>Ano</Text>
-              {error ? <Select><option>selecione a marca e o modelo</option></Select> : null}
-              {!isLoading ? (
-                <Select
-                  name='year'
-                  value={yearValue}
-                  onChange={e => this.handleYearSelected(e.target.value)}
-                >
-                  {year.map(item => {
-                    return (
-                      <option value={item.codigo}>{item.nome}</option>
-                    )
-                  })}
-                </Select>
-              ) : (
-                  <h3>Loading...</h3>
-                )}
-            </div>
-          </Flexbox>
-        </FormContent>
-      </div>
+      <FormContent>
+        <Flexbox vertical middle>
+          <FormItem>
+            <FormLabel>Selecione a marca do carro</FormLabel>
+            {error ? <p>Nenhuma opção encontrada</p> : null}
+            {!isLoading ? (
+              <Select
+                name='brand'
+                value={brandValue}
+                onChange={e => this.handleBrandSelected(e.target.value)}>
+                {brand.map(item => {
+                  return (
+                    <option value={item.codigo} key={item.codigo}>{item.nome}</option>
+                  )
+                })}
+              </Select>
+            ) : (
+                <h3>Loading...</h3>
+              )}
+          </FormItem>
+          {brandValue ? <FormItem>
+            <FormLabel>Selecione o modelo</FormLabel>
+            {!isLoading ? (
+              <Select
+                name='model'
+                value={modelValue}
+                onChange={e => this.handleModelSelected(e.target.value)}
+              >
+                {model.map(item => {
+                  return (
+                    <option value={item.codigo}>{item.nome}</option>
+                  )
+                })}
+              </Select>
+            ) : (
+                <h3>Loading...</h3>
+              )}
+          </FormItem> : null}
+
+          {modelValue ? <FormItem>
+            <FormLabel>Selecione o ano</FormLabel>
+            {error ? <Select><option>selecione a marca e o modelo</option></Select> : null}
+            {!isLoading ? (
+              <Select
+                name='year'
+                value={yearValue}
+                onChange={e => this.handleYearSelected(e.target.value)}
+              >
+                {year.map(item => {
+                  return (
+                    <option value={item.codigo}>{item.nome}</option>
+                  )
+                })}
+              </Select>
+            ) : (
+                <h3>Loading...</h3>
+              )}
+          </FormItem> : null}
+        </Flexbox>
+      </FormContent>
     )
   }
 }

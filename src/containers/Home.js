@@ -7,24 +7,27 @@ import {
 import Filter from './Filter/Filter'
 
 class Home extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     // this.fetchData()
   }
 
-  render () {
+  render() {
     return (
-      <Page>
-        <Flexbox vertical>
-          <Header height='100px' />
+      <Flexbox vertical>
+        <Header>
           <Filter />
-        </Flexbox>
-      </Page >
+        </Header>
+
+        <Page>
+          Test
+        </Page >
+      </Flexbox>
     )
   }
 }
