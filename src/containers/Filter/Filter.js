@@ -37,7 +37,8 @@ class Filter extends Component {
       year: [],
       data: [],
       isLoading: false,
-      isDataShow: true
+      isDataShow: true,
+      errorLoading: false
     }
   }
 
@@ -51,14 +52,14 @@ class Filter extends Component {
       .then(data =>
         this.setState({
           brand: data,
-          isLoading: false,
+          isLoading: false
         })
       )
       .catch(error => this.setState({ error, isLoading: false }))
   }
 
   handleBrandSelected(value) {
-    this.setState({ brandValue: value })
+    this.setState({ brandValue: value})
     this.fetchModelData(value)
   }
 
@@ -79,6 +80,7 @@ class Filter extends Component {
           model: data.modelos,
           year: data.anos,
           isLoading: false,
+          errorLoading: false
         })
       )
       .catch(error => this.setState({ error, isLoading: false }))
@@ -86,16 +88,18 @@ class Filter extends Component {
 
   fetchListData(year) {
     const { brandValue, modelValue } = this.state
-    fetch(`https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos/5940/anos/2014-3`)
-    // fetch(`https://parallelum.com.br/fipe/api/v1/carros/marcas/${brandValue}/modelos/${modelValue}/anos/${year}`)
+    console.log(this.state)
+    console.log(year)
+    fetch(`https://parallelum.com.br/fipe/api/v1/carros/marcas/${brandValue}/modelos/${modelValue}/anos/${year}`)
       .then(response => response.json())
       .then(data =>
         this.setState({
           data: data,
           isDataShow: false,
+          errorLoading: false
         })
       )
-      .catch(error => this.setState({ error, isLoading: false }))
+      .catch(error => this.setState({ error, errorLoading: true, isLoading: false }))
   }
 
   render() {
@@ -105,7 +109,7 @@ class Filter extends Component {
       brand,
       model,
       year,
-      error,
+      errorLoading,
       data,
       brandValue,
       modelValue,
@@ -163,7 +167,7 @@ class Filter extends Component {
             ) : null}
           </FormItem> : null}
         </Flexbox>
-        {!isDataShow ? <CarCard data={data} /> : null}
+        {!isDataShow ? !errorLoading ? (<CarCard data={data} />) : <p>Nenhum modelo encontrado</p> : null}
       </FormContent>
     )
   }
