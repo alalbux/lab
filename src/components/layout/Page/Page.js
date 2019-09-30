@@ -1,25 +1,20 @@
 import React from 'react'
 import { oneOfType, node, func } from 'prop-types'
 import styled from 'styled-components'
+import Flexbox from '../Flexbox/Flexbox'
 
 const PageContainer = styled.div`
   background-color: #FFFFFF;
   max-width: 1360px;
-  padding: 0 16px;
+  padding: 36px;
   width: 100%;
   margin: 0 auto;
   height: 100%;
 `
 
-const PageContent = styled.div`
-  display: flex;
-`
-
 const Page = ({ children }) => (
   <PageContainer>
-    <PageContent>
-      {children}
-    </PageContent>
+    {children}
   </PageContainer>
 )
 
