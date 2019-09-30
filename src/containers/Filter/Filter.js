@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import {
   Card,
+  CarCard,
   Text,
   Select,
   Flexbox
@@ -12,6 +13,7 @@ const FormContent = styled.form`
   margin: 54px 20px;
 `
 const FormItem = styled(Card)`
+  max-width: 380px;
   text-align: center;
   margin: 24px;
   min-height: 100px;
@@ -33,10 +35,11 @@ class Filter extends Component {
       brand: [],
       model: [],
       year: [],
-      isLoading: false
+      data: [],
+      isLoading: false,
+      isDataShow: true
     }
   }
-
 
   componentDidMount() {
     this.fetchBrandData()
@@ -65,6 +68,7 @@ class Filter extends Component {
 
   handleYearSelected(value) {
     this.setState({ yearValue: value })
+    this.fetchListData(value)
   }
 
   fetchModelData(brandID) {
@@ -80,23 +84,38 @@ class Filter extends Component {
       .catch(error => this.setState({ error, isLoading: false }))
   }
 
+  fetchListData(year) {
+    const { brandValue, modelValue } = this.state
+    fetch(`https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos/5940/anos/2014-3`)
+    // fetch(`https://parallelum.com.br/fipe/api/v1/carros/marcas/${brandValue}/modelos/${modelValue}/anos/${year}`)
+      .then(response => response.json())
+      .then(data =>
+        this.setState({
+          data: data,
+          isDataShow: false,
+        })
+      )
+      .catch(error => this.setState({ error, isLoading: false }))
+  }
+
   render() {
     const {
       isLoading,
+      isDataShow,
       brand,
       model,
       year,
       error,
+      data,
       brandValue,
       modelValue,
       yearValue
     } = this.state
     return (
       <FormContent>
-        <Flexbox vertical middle>
+        <Flexbox middle>
           <FormItem>
             <FormLabel>Selecione a marca do carro</FormLabel>
-            {error ? <p>Nenhuma opção encontrada</p> : null}
             {!isLoading ? (
               <Select
                 name='brand'
@@ -108,9 +127,7 @@ class Filter extends Component {
                   )
                 })}
               </Select>
-            ) : (
-                <h3>Loading...</h3>
-              )}
+            ) : null}
           </FormItem>
           {brandValue ? <FormItem>
             <FormLabel>Selecione o modelo</FormLabel>
@@ -126,14 +143,11 @@ class Filter extends Component {
                   )
                 })}
               </Select>
-            ) : (
-                <h3>Loading...</h3>
-              )}
+            ) : null}
           </FormItem> : null}
 
           {modelValue ? <FormItem>
             <FormLabel>Selecione o ano</FormLabel>
-            {error ? <Select><option>selecione a marca e o modelo</option></Select> : null}
             {!isLoading ? (
               <Select
                 name='year'
@@ -146,11 +160,10 @@ class Filter extends Component {
                   )
                 })}
               </Select>
-            ) : (
-                <h3>Loading...</h3>
-              )}
+            ) : null}
           </FormItem> : null}
         </Flexbox>
+        {!isDataShow ? <CarCard data={data} /> : null}
       </FormContent>
     )
   }
