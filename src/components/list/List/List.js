@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const List = styled.ul`
   list-style: none;
-  margin: 0;
+  margin: 24px auto;
   padding: 0;
   display: flex;
   flex-direction: column;
