@@ -41,31 +41,6 @@ class Home extends Component {
         <Header>
           <Filter />
         </Header>
-        <Page>
-          <Title.H3>Favoritos</Title.H3>
-          <List>
-            <ListItem>
-              <Text>Marca #1</Text>
-              <Text>Modelo</Text>
-              <Text>Ano</Text>
-            </ListItem>
-            <ListItem>
-              <Text>Marca #2</Text>
-              <Text>Modelo</Text>
-              <Text>Ano</Text>
-            </ListItem>
-            <ListItem>
-              <Text>Marca #3</Text>
-              <Text>Modelo</Text>
-              <Text>Ano</Text>
-            </ListItem>
-            <ListItem>
-              <Text>Marca #4</Text>
-              <Text>Modelo</Text>
-              <Text>Ano</Text>
-            </ListItem>
-          </List>
-        </Page>
       </Flexbox>
     )
   }
