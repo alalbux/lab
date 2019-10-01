@@ -15,6 +15,10 @@ const Card = styled.div`
   ${props => props.height && `height: ${props.height};`}
   ${props => props.onClick && `cursor: pointer;`}
   ${props => props.border && `border: ${props.border};`}
+
+  &:hover {
+    color: #FF1493;
+  }
 `
 
 Card.displayName = 'Card'

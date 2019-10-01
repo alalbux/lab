@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { shape, string } from 'prop-types'
 import styled from 'styled-components'
 import {
   Card
@@ -73,26 +74,25 @@ const FavButton = styled(Button)`
   margin-right: 15px;
 `
 
-
-const CarCard = ({ data }) => (
+const CarCard = ({ car }) => (
   <CarCardContainer>
     <Flexbox middle>
       <Image>
         <CardIcon />
       </Image>
       <CardInfoContainer>
-        <BrandCar>{data.Marca}</BrandCar>
-        <ModelCar>{data.Modelo}</ModelCar>
+        <BrandCar>{car.Marca}</BrandCar>
+        <ModelCar>{car.Modelo}</ModelCar>
         <CardInfo spacing='between'>
-          <Text><Label>Combustível:</Label> {data.Combustivel}</Text>
-          <Text><Label>Ano:</Label> {data.AnoModelo}</Text>
-          <Text><Label>Código:</Label> {data.CodigoFipe}</Text>
+          <Text><Label>Combustível:</Label> {car.Combustivel}</Text>
+          <Text><Label>Ano:</Label> {car.AnoModelo}</Text>
+          <Text><Label>Código:</Label> {car.CodigoFipe}</Text>
         </CardInfo>
       </CardInfoContainer>
       <ValueContainer>
         <Flexbox vertical spacing='between'>
-          <ValueLabel>{data.Valor}</ValueLabel>
-          <ReferenceInfo><Label>Mês de referência:</Label> {data.MesReferencia}</ReferenceInfo>
+          <ValueLabel>{car.Valor}</ValueLabel>
+          <ReferenceInfo><Label>Mês de referência:</Label> {car.MesReferencia}</ReferenceInfo>
           <FavButton align='right'>❤</FavButton>
         </Flexbox>
       </ValueContainer>
@@ -100,5 +100,18 @@ const CarCard = ({ data }) => (
   </CarCardContainer>
 )
 
+CarCard.propTypes = {
+  car: shape({
+    Marca: string,
+    Modelo: string,
+    Combustivel: string,
+    AnoModelo: string,
+    CodigoFipe: string,
+    Valor: string,
+    MesReferencia: string
+  })
+}
+
+CarCard.displayName = 'CarCard'
 
 export default CarCard
