@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 import {
-  Button,
-  Card,
-  CarCard,
   Header,
   Flexbox,
   Page,
@@ -14,7 +11,7 @@ import {
 import Filter from './Filter/Filter'
 
 class Home extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       data: [],
@@ -22,23 +19,23 @@ class Home extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchListData()
   }
 
-  fetchListData() {
+  fetchListData () {
     fetch(`https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos/5940/anos/2014-3`)
       .then(response => response.json())
       .then(data =>
         this.setState({
           data: data,
-          isLoading: false,
+          isLoading: false
         })
       )
       .catch(error => this.setState({ error, isLoading: false }))
   }
 
-  render() {
+  render () {
     return (
       <Flexbox vertical>
         <Header>
