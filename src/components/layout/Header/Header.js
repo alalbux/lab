@@ -24,7 +24,7 @@ const Subtitle = styled(Title.H2)`
   margin-top: 16px;
 `
 
-const Header = ({children}) => (
+const Header = ({ children }) => (
   <HeaderContainer>
     <Flexbox vertical middle>
       <Title.H1>Laborit Cars</Title.H1>
