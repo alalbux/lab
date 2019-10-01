@@ -25,7 +25,7 @@ const FormLabel = styled(Text)`
 `
 
 class Filter extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       brandValue: '',
@@ -42,11 +42,11 @@ class Filter extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchBrandData()
   }
 
-  fetchBrandData() {
+  fetchBrandData () {
     fetch(`https://parallelum.com.br/fipe/api/v1/carros/marcas`)
       .then(response => response.json())
       .then(data =>
@@ -55,24 +55,24 @@ class Filter extends Component {
           isLoading: false
         })
       )
-      .catch(error => this.setState({ error, isLoading: false }))
+      .catch(error => this.setState({ error, errorLoading: true, isLoading: false }))
   }
 
-  handleBrandSelected(value) {
-    this.setState({ brandValue: value})
+  handleBrandSelected (value) {
+    this.setState({ brandValue: value })
     this.fetchModelData(value)
   }
 
-  handleModelSelected(value) {
+  handleModelSelected (value) {
     this.setState({ modelValue: value })
   }
 
-  handleYearSelected(value) {
+  handleYearSelected (value) {
     this.setState({ yearValue: value })
     this.fetchListData(value)
   }
 
-  fetchModelData(brandID) {
+  fetchModelData (brandID) {
     fetch(`https://parallelum.com.br/fipe/api/v1/carros/marcas/${brandID}/modelos`)
       .then(response => response.json())
       .then(data =>
@@ -83,13 +83,11 @@ class Filter extends Component {
           errorLoading: false
         })
       )
-      .catch(error => this.setState({ error, isLoading: false }))
+      .catch(error => this.setState({ error, errorLoading: true, isLoading: false }))
   }
 
-  fetchListData(year) {
+  fetchListData (year) {
     const { brandValue, modelValue } = this.state
-    console.log(this.state)
-    console.log(year)
     fetch(`https://parallelum.com.br/fipe/api/v1/carros/marcas/${brandValue}/modelos/${modelValue}/anos/${year}`)
       .then(response => response.json())
       .then(data =>
@@ -102,10 +100,9 @@ class Filter extends Component {
       .catch(error => this.setState({ error, errorLoading: true, isLoading: false }))
   }
 
-  render() {
+  render () {
     const {
       isLoading,
-      isDataShow,
       brand,
       model,
       year,
@@ -125,6 +122,7 @@ class Filter extends Component {
                 name='brand'
                 value={brandValue}
                 onChange={e => this.handleBrandSelected(e.target.value)}>
+                <option>Escolha uma opção</option>
                 {brand.map(item => {
                   return (
                     <option value={item.codigo} key={item.codigo}>{item.nome}</option>
@@ -133,7 +131,7 @@ class Filter extends Component {
               </Select>
             ) : null}
           </FormItem>
-          {brandValue ? <FormItem>
+          <FormItem>
             <FormLabel>Selecione o modelo</FormLabel>
             {!isLoading ? (
               <Select
@@ -141,16 +139,17 @@ class Filter extends Component {
                 value={modelValue}
                 onChange={e => this.handleModelSelected(e.target.value)}
               >
+                <option>Escolha uma opção</option>
                 {model.map(item => {
                   return (
-                    <option value={item.codigo}>{item.nome}</option>
+                    <option value={item.codigo} key={item.codigo}>{item.nome}</option>
                   )
                 })}
               </Select>
             ) : null}
-          </FormItem> : null}
+          </FormItem>
 
-          {modelValue ? <FormItem>
+          <FormItem>
             <FormLabel>Selecione o ano</FormLabel>
             {!isLoading ? (
               <Select
@@ -158,21 +157,21 @@ class Filter extends Component {
                 value={yearValue}
                 onChange={e => this.handleYearSelected(e.target.value)}
               >
+                <option>Escolha uma opção</option>
                 {year.map(item => {
                   return (
-                    <option value={item.codigo}>{item.nome}</option>
+                    <option value={item.codigo} key={item.codigo}>{item.nome}</option>
                   )
                 })}
               </Select>
             ) : null}
-          </FormItem> : null}
+          </FormItem>
         </Flexbox>
-        {!isDataShow ? !errorLoading ? (<CarCard data={data} />) : <p>Nenhum modelo encontrado</p> : null}
+        {!errorLoading ? (<CarCard car={data} />) : <p>Nenhum modelo encontrado</p>}
       </FormContent>
     )
   }
 }
-
 
 Filter.displayName = 'Filter'
 
