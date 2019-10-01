@@ -3,6 +3,7 @@
 ![](https://flat.badgen.net/github/status/alalbux/lab)
 ![](https://flat.badgen.net/github/last-commit/alalbux/lab)
 ![](https://flat.badgen.net/github/license/alalbux/lab)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1e4b99dc-1de6-4694-84bb-1f75c296c33a/deploy-status)](https://app.netlify.com/sites/labcar/deploys)
 
 Lab is a simple bookmarking app that uses [Fipe API](http://deividfortuna.github.io/fipe) for fetching brand, model and year to show informantion about the vehicles.
 
