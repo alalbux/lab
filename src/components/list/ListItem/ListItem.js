@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { oneOfType, node, func } from 'prop-types'
 import styled from 'styled-components'
 import Text from '../../content/Text/Text'
 
@@ -15,6 +16,10 @@ const ListItem = ({ children }) => (
     <Text>{children}</Text>
   </Wrapper>
 )
+
+ListItem.propTypes = {
+  children: oneOfType([node, func])
+}
 
 ListItem.displayName = 'ListItem'
 
