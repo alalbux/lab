@@ -1,7 +1,6 @@
 import React from 'react'
 import { oneOfType, node, func } from 'prop-types'
 import styled from 'styled-components'
-import Flexbox from '../Flexbox/Flexbox'
 
 const PageContainer = styled.div`
   background-color: #FFFFFF;
