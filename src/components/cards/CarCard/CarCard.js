@@ -15,19 +15,24 @@ import Text from '../../content/Text/Text'
 const CarCardContainer = styled(Card)`
   text-align: center;
   width: 100%;
-  max-width: 850px;
+  max-width: 390px;
   margin: 0 auto;
   min-height: 200px;
   margin: 16px auto;
 `
 
 const CardInfoContainer = styled.div`
-  width: 500px;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
 `
 
-const CardInfo = styled(Flexbox)`
+const CarInfo = styled(Flexbox)`
+  width: 100%;
   margin-top: 34px;
-  width: 300px;
 `
 
 const Label = styled.span`
@@ -46,55 +51,61 @@ const ModelCar = styled(Text)`
   font-size: 14px;
 `
 
+const Info = styled(Text)`
+  text-align: center;
+  margin: 0 16px;
+  display: inline-block;
+`
+
 const Image = styled.div`
   width: 180px;
-  padding: 36px;
+  padding: 16px;
 `
 
 const ValueContainer = styled.div`
-  width: 200px;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
 `
 
 const ValueLabel = styled(Text)`
-  text-align: right;
   font-size: 24px;
   font-weight: bold;
 `
 
 const ReferenceInfo = styled(Text)`
-  text-align: right;
   margin: 16px;
 `
 
 const FavButton = styled(Button)`
   padding: 8px;
-  width: 30px;
+  width: 50px;
   font-size: 35px;
   margin: 0 auto;
-  margin-right: 15px;
 `
 
 const CarCard = ({ car }) => (
   <CarCardContainer>
-    <Flexbox middle>
+    <Flexbox middle wrap>
       <Image>
         <CardIcon />
       </Image>
       <CardInfoContainer>
         <BrandCar>{car.Marca}</BrandCar>
         <ModelCar>{car.Modelo}</ModelCar>
-        <CardInfo spacing='between'>
-          <Text><Label>Combustível:</Label> {car.Combustivel}</Text>
-          <Text><Label>Ano:</Label> {car.AnoModelo}</Text>
-          <Text><Label>Código:</Label> {car.CodigoFipe}</Text>
-        </CardInfo>
+        <CarInfo horizontal justify='center' wrap>
+          <Info><Label>Combustível:</Label> {car.Combustivel}</Info>
+          <Info><Label>Ano:</Label> {car.AnoModelo}</Info>
+          <Info><Label>Código:</Label> {car.CodigoFipe}</Info>
+        </CarInfo>
       </CardInfoContainer>
       <ValueContainer>
-        <Flexbox vertical spacing='between'>
-          <ValueLabel>{car.Valor}</ValueLabel>
-          <ReferenceInfo><Label>Mês de referência:</Label> {car.MesReferencia}</ReferenceInfo>
-          <FavButton align='right'>❤</FavButton>
-        </Flexbox>
+        <ValueLabel>{car.Valor}</ValueLabel>
+        <ReferenceInfo><Label>Mês de referência:</Label> {car.MesReferencia}</ReferenceInfo>
+        <FavButton align='right'>❤</FavButton>
       </ValueContainer>
     </Flexbox>
   </CarCardContainer>

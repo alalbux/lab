@@ -13,15 +13,11 @@ const FormContent = styled.form`
   margin: 54px 20px;
 `
 const FormItem = styled(Card)`
-  width: 350px;
+  width: 100%;
+  max-width: 280px;
   text-align: center;
   margin: 24px;
   min-height: 50px;
-`
-
-const FormLabel = styled(Text)`
-  text-align: center;
-  margin-bottom: 24px;
 `
 
 class Filter extends Component {
@@ -114,8 +110,8 @@ class Filter extends Component {
     } = this.state
     return (
       <FormContent>
-        <Flexbox vertical middle>
-          <Flexbox spacing='between'>
+        <Flexbox vertical middle wrap>
+          <Flexbox horizontal justify='center' wrap>
             <FormItem>
               {!isLoading ? (
                 <Select
