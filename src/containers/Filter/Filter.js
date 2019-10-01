@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import {
   Card,
   CarCard,
-  Text,
   Select,
   Flexbox
 } from '../../components'
@@ -21,7 +20,7 @@ const FormItem = styled(Card)`
 `
 
 class Filter extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       brandValue: '',
@@ -38,11 +37,11 @@ class Filter extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchBrandData()
   }
 
-  fetchBrandData() {
+  fetchBrandData () {
     fetch(`https://parallelum.com.br/fipe/api/v1/carros/marcas`)
       .then(response => response.json())
       .then(data =>
@@ -54,21 +53,21 @@ class Filter extends Component {
       .catch(error => this.setState({ error, isLoading: false }))
   }
 
-  handleBrandSelected(value) {
+  handleBrandSelected (value) {
     this.setState({ brandValue: value })
     this.fetchModelData(value)
   }
 
-  handleModelSelected(value) {
+  handleModelSelected (value) {
     this.setState({ modelValue: value })
   }
 
-  handleYearSelected(value) {
+  handleYearSelected (value) {
     this.setState({ yearValue: value })
     this.fetchListData(value)
   }
 
-  fetchModelData(brandID) {
+  fetchModelData (brandID) {
     fetch(`https://parallelum.com.br/fipe/api/v1/carros/marcas/${brandID}/modelos`)
       .then(response => response.json())
       .then(data =>
@@ -82,7 +81,7 @@ class Filter extends Component {
       .catch(error => this.setState({ error, isLoading: false }))
   }
 
-  fetchListData(year) {
+  fetchListData (year) {
     const { brandValue, modelValue } = this.state
     fetch(`https://parallelum.com.br/fipe/api/v1/carros/marcas/${brandValue}/modelos/${modelValue}/anos/${year}`)
       .then(response => response.json())
@@ -96,7 +95,7 @@ class Filter extends Component {
       .catch(error => this.setState({ error, errorLoadData: false, isLoading: false }))
   }
 
-  render() {
+  render () {
     const {
       isLoading,
       brand,
