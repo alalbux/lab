@@ -16,7 +16,7 @@ const HeaderContainer = styled.div`
   font-weight: 600;
   width: 100%;
   margin: 0 auto;
-  min-height: 50vh;
+  min-height: 70vh;
   padding: 36px;
 `
 
