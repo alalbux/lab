@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
 import {
   Header,
-  Flexbox,
-  Page,
-  Text,
-  Title,
-  List,
-  ListItem
+  Flexbox
 } from '../components'
 import Filter from './Filter/Filter'
 
@@ -17,22 +12,6 @@ class Home extends Component {
       data: [],
       isLoading: true
     }
-  }
-
-  componentDidMount () {
-    this.fetchListData()
-  }
-
-  fetchListData () {
-    fetch(`https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos/5940/anos/2014-3`)
-      .then(response => response.json())
-      .then(data =>
-        this.setState({
-          data: data,
-          isLoading: false
-        })
-      )
-      .catch(error => this.setState({ error, isLoading: false }))
   }
 
   render () {

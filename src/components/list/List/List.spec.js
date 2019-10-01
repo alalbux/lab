@@ -4,6 +4,6 @@ import List from './List'
 
 describe('List > ', () => {
   it('renders without crashing', () => {
-    shallow(<List />)
+    shallow(<List>Test</List>)
   })
 })

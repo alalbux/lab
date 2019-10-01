@@ -27,7 +27,7 @@ const Select = styled.select`
 
 Select.propTypes = {
   children: oneOfType([node, func]).isRequired,
-  name: string.isRequired
+  name: string
 }
 
 Select.displayName = 'Select'
